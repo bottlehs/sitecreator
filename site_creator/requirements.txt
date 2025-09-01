@@ -1,0 +1,46 @@
+# Site Creator 프로젝트 의존성 (Python 3.13+ 호환)
+# Python 3.13 이상에서 테스트됨
+
+# SSH 연결 및 파일 전송
+paramiko>=3.5.0
+
+# 웹 애플리케이션 프레임워크
+Flask>=3.0.0
+gunicorn>=22.0.0
+
+# HTML 파싱 및 정리
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# 사용자 에이전트 파싱
+user-agents>=2.2.0
+
+# GUI 인터페이스 (Python 내장 모듈이므로 별도 설치 불필요)
+# tkinter
+
+# 설정 파일 파싱 (Python 내장 모듈이므로 별도 설치 불필요)
+# configparser
+
+# HTTP 요청 (선택사항)
+requests>=2.31.0
+
+# 날짜/시간 처리 (Python 내장 모듈이므로 별도 설치 불필요)
+# datetime
+
+# 정규표현식 (Python 내장 모듈이므로 별도 설치 불필요)
+# re
+
+# 파일 시스템 작업 (Python 내장 모듈이므로 별도 설치 불필요)
+# os, shutil, uuid
+
+# 개발 도구 (자동 재실행)
+watchdog>=3.0.0
+
+# GUI 프레임워크 (PyQt5 - 크로스 플랫폼, Python 3.13 호환)
+PyQt5>=5.15.0
+
+# 배포 도구 (Windows exe 생성, Python 3.13 호환)
+pyinstaller>=6.0.0
+
+# Python 3.13 호환성 확인
+# 이 프로젝트는 Python 3.13에서 테스트되었습니다.
