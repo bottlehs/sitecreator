@@ -1,0 +1,26 @@
+# Site Creator 서버 설정 파일
+# Windows와 macOS 모두에서 사용 가능
+# 이 파일을 수정하여 기본 서버 정보를 설정할 수 있습니다
+
+[server]
+# 도메인 (예: example.com)
+domain=cleanbell.shop
+
+# 서버 IP 주소
+server_ip=38.180.190.175
+
+# 서버 비밀번호
+server_pw=MGK8hAu4Ks
+
+# 템플릿 폴더 경로 (운영체제별 예시)
+# Windows: C:\Users\username\template
+# macOS/Linux: /Users/username/template
+template=
+
+# 블랙리스트 파일 경로 (운영체제별 예시)
+# Windows: C:\Users\username\blacklist.txt
+# macOS/Linux: /Users/username/blacklist.txt
+black_file=
+
+# 블랙리스트 링크 (선택사항)
+link=

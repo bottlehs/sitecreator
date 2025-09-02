@@ -1,7 +1,6 @@
 import os
 import re
 from bs4 import BeautifulSoup
-from tkinter import messagebox
 
 
 
@@ -60,4 +59,4 @@ def clean_html(path):
     path = os.path.join(path, 'white.html')
     if os.path.exists(path):
         edit_html_file(path)
-        messagebox.showinfo("성공", f"폴더 정리")
+        print("✅ HTML 정리 완료")

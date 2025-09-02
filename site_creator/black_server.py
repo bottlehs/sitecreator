@@ -1,6 +1,5 @@
 import paramiko
 import os
-from tkinter import messagebox
 
 
 
@@ -19,13 +18,13 @@ server {{
         location / {{
             include proxy_params;
             proxy_pass http://localhost:5000;
-            proxy_set_header X-Real-IP \$remote_addr;
-            proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_http_version 1.1;
-            proxy_set_header Upgrade \$http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host \$host;
-            proxy_cache_bypass \$http_upgrade;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
         }}
 }}
 ''',
@@ -56,7 +55,10 @@ def edit_config(hostname, username, password, name, data):
 
         content = get_content(name, data)
         file_path = get_filepath(name)
-        command = f"sudo bash -c 'echo \"{content}\" > {file_path}'"
+        
+        # 임시 파일에 내용을 저장한 후 이동
+        temp_file = f"/tmp/{name}_config"
+        command = f"sudo bash -c 'cat > {temp_file} << \"EOF\"\n{content}\nEOF\nmv {temp_file} {file_path}'"
 
         print(command)
 
@@ -151,7 +153,7 @@ init_commands = [
     "apt-get install python3 python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools -y",
     "apt-get install python3-venv -y",
     "apt-get install unzip",
-    "unzip /root/static.zip -d /root/static",
+    "mkdir -p /root/static",
     "cd /root/project && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
     "cp -r /root/static /root/project/",
     "cp -r /root/white.html /root/project/templates/",
@@ -173,7 +175,7 @@ User=root
 Group=www-data
 WorkingDirectory=/root/project
 Environment="PATH=/root/project/venv/bin"
-ExecStart=/root/project/venv/bin/gunicorn --bind 0.0.0.0:5000 wsgi:app
+ExecStart=/root/project/venv/bin/gunicorn --bind 0.0.0.0:5000 --pythonpath /root/project wsgi:app
 [Install]
 WantedBy=multi-user.target
 EOT
@@ -201,4 +203,4 @@ def black_server_control(domain, links,  server, server_pass):
     }
     edit_config(server, server_username, server_pass, 'config', data)
     run_commands(server, server_username, server_pass, project_start_commands)
-    messagebox.showinfo("성공", f"세팅 성공")
+    print("성공: 세팅 완료")

@@ -1,6 +1,5 @@
 import os
 import uuid
-from tkinter import messagebox
 import shutil
 
 def get_folders_in_path(path):
@@ -43,7 +42,7 @@ def move_files_to_static(source_dir, target_dir):
 
 def clean_folder(path):
     if os.path.exists(os.path.join(path, 'white.html')):
-        messagebox.showinfo("실패", f"이미 진행 완료")
+        print("❌ 이미 진행 완료")
 
     else:
         move_files_to_static(path, os.path.join(path, str(uuid.uuid4())))
@@ -54,4 +53,4 @@ def clean_folder(path):
         white_path = os.path.join(path, 'white.html')
         if os.path.exists(index_path):
             os.rename(index_path, white_path)
-        messagebox.showinfo("성공", f"폴더 정리")
+        print("✅ 폴더 정리 완료")

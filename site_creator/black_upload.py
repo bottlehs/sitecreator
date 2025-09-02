@@ -1,6 +1,5 @@
 import paramiko
 import os
-from tkinter import messagebox
 
 def upload_server(local_path, remote_path, hostname, username, password, item_name=''):
     def upload_folder_recursive(local_folder_path, ec2_folder_path):
@@ -76,8 +75,8 @@ def black_upload(path, server, server_pass):
             upload_server(path, server_path, server, server_username, server_pass, 'black.html')
             run_commands(server, server_username, server_pass, cp_cmd)
 
-            messagebox.showinfo("성공", f"업로드 성공")
+            print("✅ 블랙 업로드 성공")
         else:
-            messagebox.showinfo("실패", f"서버 정리 확인")
+            print("❌ 서버 정리 확인 필요")
     else:
-        messagebox.showinfo("실패", f"입력갑 확인")
+        print("❌ 입력값 확인 필요")

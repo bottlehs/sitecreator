@@ -1,6 +1,5 @@
 
 import paramiko
-from tkinter import messagebox
 
 
 
@@ -26,4 +25,4 @@ def run_commands(hostname, username, password, commands):
 def domain_control(domain, server, server_pass):
     certbot_commands = [f"sudo certbot --nginx -d {domain} -d www.{domain} --email info@{domain} --agree-tos --non-interactive"]
     run_commands(server, 'root', server_pass, certbot_commands)
-    messagebox.showinfo("성공", f"세팅 성공")
+    print("✅ SSL 설정 완료")

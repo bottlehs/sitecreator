@@ -1,5 +1,4 @@
 import paramiko
-from tkinter import messagebox
 
 
 def run_commands(hostname, username, password, commands):
@@ -33,4 +32,4 @@ clean_commands = [
 
 def clean(server, server_pass):
     run_commands(server, 'root', server_pass, clean_commands)
-    messagebox.showinfo("성공", f"서버 정리")
+    print("✅ 서버 정리 완료")

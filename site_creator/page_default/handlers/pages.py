@@ -1,4 +1,10 @@
 from flask import render_template, request
+import sys
+import os
+
+# 상위 디렉토리를 Python 경로에 추가
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from handlers.ip import get_ip_data
 from user_agents import parse
 from datetime import datetime
